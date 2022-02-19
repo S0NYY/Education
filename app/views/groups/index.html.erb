@@ -1,0 +1,36 @@
+<div class="row">
+  <p id="notice"><%= notice %></p>
+  <div class="col">
+    <%= link_to 'New group', new_group_path, class: 'btn btn-success' %>
+  </div>
+</div>
+<br/>
+<div class="card">
+    <div class="row">
+      <div class="col">
+	  	<h1>Groups</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Course name</th>
+            <th>Group name</th>
+            <th>active</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td class="align-middle"><%= group.course.name %></td>
+            <td class="align-middle"><%= group.name %></td>
+            <td class="align-middle"><%= group.active %></td>
+            <td class="align-middle"><%= link_to 'Edit', edit_group_path(group), class: 'btn btn-warning' %></td>
+            <td class="align-middle"><%= link_to 'Destroy', [group], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+</div> 

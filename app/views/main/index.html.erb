@@ -1,0 +1,13 @@
+<h1>Main Page</h1>
+<% if current_user %>
+<p><%= current_user.id  %></p>
+<p><%= current_user.email  %></p>
+<p><%= current_user&.admin?  %></p>
+<p><%= current_user&.teacher?  %></p>
+<p><%= current_user&.student?  %></p>
+
+<p><%= link_to "sign_out", destroy_user_session_path, method: :delete %></p>
+<% else %>
+<p><%= link_to "sign_up", new_user_registration_path %></p>
+<p><%= link_to "sign_up", new_user_session_path %></p>
+<% end %>

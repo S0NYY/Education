@@ -1,0 +1,52 @@
+<div class="row">
+  <p id="notice"><%= notice %></p>
+  <div class="col">
+    <% if current_user.admin? %>
+    <%= link_to 'New Profile', new_profile_path, class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
+<br/>
+<div class="card">
+    <div class="row">
+      <div class="col">
+	  	<h1>Profiles</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Pin</th>
+            <th>Mobile Phone</th>
+            <th>email</th>
+            <th>Birth Date</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+      <% if current_user.admin? %>
+        <% @profiles.each do |profile| %>
+          <tr>
+            <td class="align-middle"><%= profile&.first_name %></td>
+            <td class="align-middle"><%= profile&.last_name %></td>
+            <td class="align-middle"><%= profile&.pin %></td>
+            <td class="align-middle"><%= profile&.mobile_phone %></td>
+            <td class="align-middle"><%= profile&.birth_date %></td>
+            <td class="align-middle"><%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-warning' %></td>
+            <td class="align-middle"><%= link_to 'Destroy', [profile], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      <% else %>
+            <td class="align-middle"><%= @profiles&.first_name %></td>
+            <td class="align-middle"><%= @profiles&.last_name %></td>
+            <td class="align-middle"><%= @profiles&.pin %></td>
+            <td class="align-middle"><%= @profiles&.mobile_phone %></td>
+            <td class="align-middle"><%= @profiles&.birth_date %></td>
+            <td class="align-middle"><%= link_to 'Edit', edit_profile_path(@profiles), class: 'btn btn-warning' %></td>
+      <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+</div> 

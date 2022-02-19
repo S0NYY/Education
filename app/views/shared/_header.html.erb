@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark flex-column flex-md-row bd-navbar">
+  <%= link_to "#{current_user.role}", root_url, class: 'navbar-brand' %>
+  
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav mr-auto">
+      <% if current_user.admin? %>
+
+      <li class="nav-item">
+      <%= link_to 'Course', courses_path, class: 'nav-link'%>
+      </li>
+
+      <li class="nav-item">
+      <%= link_to 'Groups', groups_path, class: 'nav-link'%>
+      </li>
+
+      <li class="nav-item">
+      <%= link_to 'Subject', subjects_path, class: 'nav-link'%>
+      </li>
+
+      <li class="nav-item">
+      <%= link_to 'Group Subject', group_subjects_path, class: 'nav-link'%>
+      </li>
+
+      <li class="nav-item">
+      <%= link_to 'Profile', profiles_path, class: 'nav-link'%>
+      </li>
+
+      <% elsif current_user.teacher? %>
+      
+      <li class="nav-item">
+        <%= link_to 'Create Test', exams_path, class: 'nav-link'%>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Profile', profiles_path, class: 'nav-link'%>
+      </li>
+
+      <% else %>
+
+      <li class="nav-item">
+        <%= link_to 'Create Test', exams_path, class: 'nav-link'%>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+
+</nav>

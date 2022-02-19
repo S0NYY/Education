@@ -1,0 +1,36 @@
+<div class="row">
+  <p id="notice"><%= notice %></p>
+  <div class="col">
+    <%= link_to 'New Subject', new_subject_path, class: 'btn btn-success' %>
+  </div>
+</div>
+<br/>
+<div class="card">
+    <div class="row">
+      <div class="col">
+	  	<h1>Subjects</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Course name</th>
+            <th>Teacher</th>
+            <th>active</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @subjects.each do |subject| %>
+          <tr>
+            <td class="align-middle"><%= subject.name %></td>
+            <td class="align-middle"><%= subject.user&.email %></td>
+            <td class="align-middle"><%= subject.active %></td>
+            <td class="align-middle"><%= link_to 'Edit', edit_subject_path(subject), class: 'btn btn-warning' %></td>
+            <td class="align-middle"><%= link_to 'Destroy', [subject], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+</div> 

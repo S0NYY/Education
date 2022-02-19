@@ -1,0 +1,6 @@
+<%= simple_form_for (group) do |f| %>
+<%= f.association :course %>
+<%= f.input :name %>
+<%= f.input :active %>
+<%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

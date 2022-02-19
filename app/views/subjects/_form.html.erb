@@ -1,0 +1,6 @@
+<%= simple_form_for (subject) do |f| %>
+<%= f.association :user, :collection => User.teacher, label_method: :email%>
+<%= f.input :name %>
+<%= f.input :active %>
+<%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

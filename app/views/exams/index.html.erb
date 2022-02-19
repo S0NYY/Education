@@ -1,0 +1,38 @@
+<div class="row">
+  <p id="notice"><%= notice %></p>
+  <div class="col">
+    <%= link_to 'New Exam', new_exam_path, class: 'btn btn-success' %>
+  </div>
+</div>
+<br/>
+<div class="card">
+    <div class="row">
+      <div class="col">
+	  	<h1>Exams </h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Group name</th>
+            <th>Subject name</th>
+            <th>Name</th>
+            <th>Active</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @exams.each do |exam| %>
+          <tr>
+            <td class="align-middle"><%= exam.group.name %></td>
+            <td class="align-middle"><%= exam.subject.name %></td>
+            <td class="align-middle"><%= exam.name %></td>
+            <td class="align-middle"><%= exam.active %></td>
+            <td class="align-middle"><%= link_to 'Edit', edit_exam_path(exam), class: 'btn btn-warning' %></td>
+            <td class="align-middle"><%= link_to 'Destroy', [exam], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+</div> 
